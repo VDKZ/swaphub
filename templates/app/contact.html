@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block stylesheet %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/contact.css' %}">
+{% endblock %}
+
+{% block body %}
+
+<div class="container-fluid" data-user="{{user.id}}">
+  <div class="row">
+    <div class="col-md-6">
+
+		<div class="card">
+			  <div class="card-header">
+			    Support
+			  </div>
+			  <div class="card-body">
+			  	<div class="row">
+			  		<div id="accordion" role="tablist" aria-multiselectable="true">
+					  <div class="card">
+					    <div class="card-header" role="tab" id="headingOne">
+					      <h5 class="mb-0">
+					        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+					          How can i earn points ?
+					        </a>
+					      </h5>
+					    </div>
+
+					    <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+					      <div class="card-block">
+					        To earn points, you must visit links in the dashboard section.
+					        You can use the x4 mode to earn more points, the more you visit links, the more points you earn.
+					      </div>
+					    </div>
+					  </div>
+					  <div class="card">
+					    <div class="card-header" role="tab" id="headingTwo">
+					      <h5 class="mb-0">
+					        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+					          How long it take to receive visits ?
+					        </a>
+					      </h5>
+					    </div>
+					    <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+					      <div class="card-block">
+					        It depend on when the other members will visit your link(s), keep in mind that the more points you have, the higher you will be in the link list.
+					      </div>
+					    </div>
+					  </div>
+					  <div class="card">
+					    <div class="card-header" role="tab" id="headingThree">
+					      <h5 class="mb-0">
+					        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+					          How can i now if the visits are delivered to my website ?
+					        </a>
+					      </h5>
+					    </div>
+					    <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
+					      <div class="card-block">
+					        You can install tracker such as google analytics to see the statistics about received visits.
+					      </div>
+					    </div>
+					  </div>
+					  <div class="card">
+					    <div class="card-header" role="tab" id="headingFor">
+					      <h5 class="mb-0">
+					        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFor" aria-expanded="false" aria-controls="collapseFor">
+					          How much website traffic can SwapHub deliver?
+					        </a>
+					      </h5>
+					    </div>
+					    <div id="collapseFor" class="collapse" role="tabpanel" aria-labelledby="headingFor">
+					      <div class="card-block">
+					        This depend on the availability of the other members and the daily visits limit you have configured on your account. 
+					      </div>
+					    </div>
+					  </div>
+					  <div class="card">
+					    <div class="card-header" role="tab" id="headingFive">
+					      <h5 class="mb-0">
+					        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+					          What is the Visit Duration?
+					        </a>
+					      </h5>
+					    </div>
+					    <div id="collapseFive" class="collapse" role="tabpanel" aria-labelledby="headingFive">
+					      <div class="card-block">
+					        The visit duration is a random value between 1 minute and 4 minutes so the average visit will be 2,5 minutes.
+					      </div>
+					    </div>
+					  </div>
+					  <div class="card">
+					    <div class="card-header" role="tab" id="headingSix">
+					      <h5 class="mb-0">
+					        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+					          Why i don't receive any visits ?
+					        </a>
+					      </h5>
+					    </div>
+					    <div id="collapseSix" class="collapse" role="tabpanel" aria-labelledby="headingSix">
+					      <div class="card-block">
+					        When you have 0 points or less, your links are no longer visible in the dashboard.
+					        Earn points in order to get visits on your link(s).
+					      </div>
+					    </div>
+					  </div>
+					</div>
+                </div>
+            </div>
+		</div>
+
+    </div>
+    <div class="col-md-6">
+
+		<div class="card">
+			  <div class="card-header">
+			    Contact Us
+			  </div>
+			  <div class="card-body">
+			  	<p>Feel free to send your feedback or ask your questions about SwapHub, we will be happy to answer !</p>
+			  	<div class="row" style="width:100%;">
+                    <form method="post" style="width:100%;">
+					    {% csrf_token %}
+					    {{ form.as_p }}
+					    <div class="form-actions" id="div_contact">
+					      <button type="submit" class="btn btn-primary">Send</button>
+					    </div>
+					</form>
+                </div>
+            </div>
+		</div>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,106 @@
+{% load bootstrap4 %}
+{% load static %}
+{% load fontawesome %}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>{% block title %}SwapHub{% endblock %}</title>
+  {% block meta %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="{ site.name }}">
+    <meta name="og:type" content="website">
+  {% endblock meta %}
+
+  
+  {% bootstrap_css %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+  <link rel="icon" type="image/png" sizes="64x64" href="{% static 'images/logo.png' %}">
+  {% fontawesome_stylesheet %}
+
+  {% block stylesheet %}
+  {% endblock %}
+
+  {% block meta_tags %}
+    <meta property="og:title" content="">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="{% static 'images/logo.png' %}">
+  {% endblock meta_tags %}
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+
+  <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+    <div class="container topnav" id="topnavcont">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header" style="display:flex;">
+          <a class="company-logo" href="/">
+            <i class="fa fa-code-fork fa-2x logo_base" aria-hidden="true"></i>
+          </a>
+          <a class="navbar-brand topnav" href="/" id="navtitre" style="margin-left:-5px;padding-top:13px;">
+            SwapHub
+          </a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right" id="navbarright">
+                <li><a class="a_log" href="{% url "account:signup" %}">Sign up</a></li>
+                <li><a class="a_log" href="{% url "account:signin" %}">Log in</a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+  </nav>
+
+{% block body %}
+
+
+{% endblock %}
+
+
+{% block footer %}
+  <footer class="footer">
+    <section class="stage-pod">
+      <div class="container container-pod t-center">
+        <div class="footer-links">
+          <ul id="menu-footer-menu" class="nav footer-nav clearfix">
+            <li><a class="a_terms" href="{% url "app:terms" %}">Terms of service</a></li>
+          </ul>
+        </div>
+        <div class="footer-attribution">
+          <a href="../../" class="footer-logo"></a>
+        </div>
+        <ul class="footer-social-links">
+          <li class="footer-social-link footer-social-link-facebook">
+            <a href="http://www.facebook.com/bitly" target="_blank"> {% fontawesome_icon 'fab fa-facebook-square fa-2x' %} </a>
+          </li>
+          <li class="footer-social-link footer-social-link-twitter">
+            <a href="http://twitter.com/bitly" target="_blank"> {% fontawesome_icon 'fab fa-twitter-square fa-2x' %} </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </footer>
+{% endblock %}
+
+
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.js" />
+{% bootstrap_javascript %}
+<script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+{% block scripts %}
+{% endblock scripts %}
+
+</body>
+</html>

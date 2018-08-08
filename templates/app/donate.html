@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block stylesheet %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/donate.css' %}">
+{% endblock %}
+
+{% block body %}
+
+<div class="container-fluid" data-user="{{user.id}}">
+  <div class="row">
+    <div class="col-md-12">
+		<div class="card">
+			  <div class="card-header">
+			    Support Us
+			  </div>
+			  <div class="card-body">
+			  	<p>We will highly appreciate any donation you can give to support us and help us to improve SwapHub</p>
+            </div>
+		</div>
+    </div>
+    <div class="col-md-6">
+		<div class="card">
+			  <div class="card-header">
+			    Paypal
+			  </div>
+			  <div class="card-body">
+			  	<p>We will highly appreciate any donation you can give to support us and help us to improve SwapHub</p>
+            </div>
+		</div>
+    </div>
+    <div class="col-md-6">
+		<div class="card">
+			  <div class="card-header">
+			    Bitcoin
+			  </div>
+			  <div class="card-body">
+			  	<p>We will highly appreciate any donation you can give to support us and help us to improve SwapHub</p>
+            </div>
+		</div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

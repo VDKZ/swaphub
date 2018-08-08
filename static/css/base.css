@@ -1,0 +1,39 @@
+body {
+    font-family: Montserrat;
+    color: #333 !important;
+}
+
+#page-wrapper.open #sidebar-wrapper {
+    left: 150px;
+}
+
+#sidebar-wrapper, .sidebar-content {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+}
+
+#sidebar-wrapper {
+    -ms-flex-flow: column;
+    flex-flow: column;
+}
+
+#sidebar-wrapper {
+    background: #30426a;
+}
+
+#page-wrapper, #sidebar-wrapper {
+    -webkit-transition: all .4s ease 0s;
+    transition: all .4s ease 0s;
+}
+
+#sidebar-wrapper {
+    margin-left: -150px;
+    left: -30px;
+    width: 250px;
+    position: fixed;
+    height: 100%;
+    z-index: 999;
+}

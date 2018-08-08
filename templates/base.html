@@ -1,0 +1,160 @@
+{% load bootstrap4 %}
+{% load static %}
+{% load fontawesome %}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>{% block title %}SwapHub{% endblock %}</title>
+	{% block meta %}
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="msapplication-TileColor" content="#2b5797">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-title" content="{{ site.name }}">
+		<meta name="og:type" content="website">
+	{% endblock meta %}
+
+  
+	{% bootstrap_css %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/sidebar-left.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/jquery-confirm.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-toggle.css' %}">
+	<link rel="icon" type="image/png" sizes="64x64" href="{% static 'images/logo.png' %}">
+	{% fontawesome_stylesheet %}
+
+	{% block stylesheet %}
+	{% endblock %}
+
+	{% block meta_tags %}
+		<meta property="og:title" content="{{ site.name }}">
+		<meta property="og:url" content="{{ request.build_absolute_uri }}">
+		<meta property="og:image" content="{% static 'images/logo.png' %}">
+	{% endblock meta_tags %}
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+
+	<aside class="sidebar-left">
+
+		<a class="company-logo" href="{% url "app:dashboard" %}">
+			<i class="fa fa-code-fork fa-2x logo_base" aria-hidden="true"></i>
+		</a>
+
+		<div class="sidebar-links">
+			<a draggable="false" class="link-orange {% if onglet == 'dashboard' %} selected {% endif %}" href="{% url "app:dashboard" %}"><i class="fa fa-picture-o"></i>Dashboard</a>
+			<a draggable="false" class="link-orange {% if onglet == 'account' %} selected {% endif %}" href="{% url "account:account" %}"><i class="fa fa-pie-chart"></i>Account</a>
+			<a draggable="false" class="link-orange {% if onglet == 'contact' %} selected {% endif %}" href="{% url "contact:contact" %}"><i class="fa fa-question"></i>Support</a>
+			<a draggable="false" class="link-orange {% if onglet == 'donate' %} selected {% endif %}" href="{% url "app:donate" %}"><i class="fa fa-usd"></i>Donate</a>
+		</div>
+
+	</aside>
+
+	<div class="main-content">
+
+		<div class="menu">
+
+			<rd-header>
+				<div class="row header">
+					<div id="loadingbar-placeholder"></div>
+					<div class="col-xs-12">
+						<div class="meta">
+								<rd-header-title title-text="Home">
+									<div class="page white-space-normal">
+										SwapHub
+										<span class="header_title_content"></span>
+										<span class="pull-right user-box">
+											{{ user.points }} points
+										</span>
+									</div>
+								</rd-header-title>
+								<rd-header-content>
+									<div class="breadcrumb-links">
+									<div class="pull-left" ng-transclude="">
+											<span>{{ user.email }}</span>
+										</div>
+										<div class="pull-right" ng-if="username">
+											<a href="{% url "account:logout" %}" class="text-danger" style="margin-right: 25px;">
+												<u>log out</u>
+											</a>
+										</div>
+									</div>
+								</rd-header-content>
+							</div>
+						</div>
+					</div>
+				</rd-header>
+
+				<div id="base_content" class="base-content">
+					{% csrf_token %}
+					{% block body %}
+
+					{% endblock %}
+				</div>
+		</div>
+	</div>
+
+
+<footer class="footer">
+
+</footer>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/jquery-confirm.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/bootstrap-toggle.js' %}"></script>
+	<script>
+
+		$(function () {
+
+			var links = $('.sidebar-links > a');
+
+			links.on('click', function () {
+
+				links.removeClass('selected');
+				$(this).addClass('selected');
+
+			})
+		});
+
+		function getCookie(name) {
+		    var cookieValue = null;
+		    if (document.cookie && document.cookie != '') {
+		        var cookies = document.cookie.split(';');
+		        for (var i = 0; i < cookies.length; i++) {
+		            var cookie = jQuery.trim(cookies[i]);
+		            // Does this cookie string begin with the name we want?
+		            if (cookie.substring(0, name.length + 1) == (name + '=')) {
+		                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+		                break;
+		            }
+		        }
+		    }
+		    return cookieValue;
+		}
+
+		$.ajaxSetup({
+		    beforeSend: function(xhr, settings) {
+		        if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+		            // Only send the token to relative URLs i.e. locally.
+		            xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+		        }
+		    }
+		});
+
+	</script>
+
+	<script type="text/javascript" src="{% static 'js/base.js' %}"></script>
+	
+	{% block scripts %}
+	{% endblock scripts %}
+
+</body>
+</html>

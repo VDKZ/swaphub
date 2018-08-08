@@ -1,0 +1,95 @@
+#account_links > td {
+	text-align: center;
+}
+
+#account_tr > th {
+	text-align: center;
+}
+
+.btn-primary{
+	background-color:#e45212;
+	border-color:#e45212;
+}
+
+.btn-primary:hover{
+	background-color:#e45212;
+	border-color:#e45212;
+	opacity: 0.8;
+}
+
+.btn-outline-primary{
+	border-color:#e45212;
+}
+
+.btn-outline-primary:hover{
+	background-color:#ccc;
+	border-color:#e45212;
+}
+
+.color-primary, .text-primary {
+    color: #e45212;
+}
+
+.media-text-right {
+    text-align: right;
+}
+
+#viewLinkModal > div{
+	width:99% !important;
+	max-width:50000px;
+}
+
+
+@media (min-width: 1200px) {
+
+	.f-s-40 {
+	    font-size: 40px !important;
+	}
+
+	.p-30 {
+	    padding: 25px !important;
+	    margin-bottom: 30px;
+	    background: #ccc none repeat scroll 0 0;
+	    margin: 15px 0;
+	    padding: 20px;
+	    border: 0 solid #ccc;
+	    border-radius: 5px;
+	    box-shadow: 0;
+	}
+
+	.media-text-right > h4 {
+    	font-size: 1.7rem;
+	}
+
+	.media-text-right > p {
+	    font-size: 1.1rem;
+	}
+
+}
+
+@media (max-width: 1200px) {
+
+	.f-s-40 {
+	    font-size: 30px !important;
+	}
+
+	.p-30 {
+	    padding: 20px !important;
+	    margin-bottom: 30px;
+	    background: #ccc none repeat scroll 0 0;
+	    margin: 2px 0;
+	    padding: 20px;
+	    border: 0 solid #ccc;
+	    border-radius: 5px;
+	    box-shadow: 0;
+	}
+
+	.media-text-right > h4 {
+    	font-size: 1.3rem;
+	}
+
+	.media-text-right > p {
+	    font-size: 0.8rem;
+	}
+
+}

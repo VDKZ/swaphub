@@ -1,0 +1,306 @@
+{% extends "base.html" %}
+{% load static %}
+{% load mathfilters %}
+
+{% block stylesheet %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/account.css' %}">
+{% endblock %}
+
+{% block body %}
+
+<div class="container-fluid" id="container_account" data-user="{{user.id}}">
+
+	<div class="row">
+
+		<div class="col-md-12">
+
+			<div class="card">
+			  <div class="card-header">
+			    Account stats
+			  </div>
+			  <div class="card-body" style="padding:0.5rem;">
+			  	<div class="row">
+            <div class="col-md-3">
+                <div class="card p-30" style="height:140px;">
+                    <div class="media">
+                        <div class="media-left meida media-middle">
+                            <span><i class="fa fa-bar-chart f-s-40 color-primary"></i></span>
+                        </div>
+                        <div class="media-body media-text-right">
+                            <h4>{{totalView}}</h4>
+                            <p class="m-b-0">Visits</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card p-30" style="height:140px;">
+                    <div class="media">
+                        <div class="media-left meida media-middle">
+                            <span><i class="fa fa-hourglass-o f-s-40 color-primary"></i></span>
+                        </div>
+                        <div class="media-body media-text-right">
+                            <h4>
+                              {% if totalTime > 3600 %}
+                                {{totalTime|div:"3600"|floatformat}} hours
+                              {% elif totalTime < 3600 and totalTime > 60 %}
+                                {{totalTime|div:"60"|floatformat}} min
+                              {% else %}
+                                {{totalTime|floatformat}} sec
+                              {% endif %}
+                            </h4>
+                            <p class="m-b-0">Time</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card p-30" style="height:140px;">
+                    <div class="media">
+                        <div class="media-left meida media-middle">
+                            <span><i class="fa fa-leaf f-s-40 color-primary"></i></span>
+                        </div>
+                        <div class="media-body media-text-right">
+                            <h4>{{user.points}}</h4>
+                            <p class="m-b-0">Points</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card p-30" style="height:140px;">
+                    <div class="media">
+                        <div class="media-left meida media-middle">
+                            <span><i class="fa fa-university f-s-40 color-primary"></i></span>
+                        </div>
+                        <div class="media-body media-text-right">
+                            <h4>{{rank.name}}</h4>
+                            <p class="m-b-0">Rank</p>
+                            <div class="progress" style="height:5px">
+                              <div class="progress-bar progress-bar-striped" style="width:{{rank.progress}}%;background-color:#e45212;"></div>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+			  </div>
+			</div>
+		</div>
+
+		<div class="col-md-12" style="margin-top:30px;">
+
+			<div class="card">
+				<div class="card-header">
+					My website links
+				</div>
+				<div class="card-body" id="card_body" data-number="{{rank.rank}}" style="overflow-x: scroll;">
+
+					<button  id="add_link" type="button" class="btn btn-primary" style="margin-bottom:20px;{% if links|length >= rank.rank %}display:none;{% endif %}
+">Add new link</button>
+
+          <p style="font-style: italic;font-size:14px;">You get up to {{rank.rank}} link(s), increase your rank to earn link slot (you can get up to 6 links)</p>
+					<p>Note : for Youtube videos use "https://www.youtube.com/embed/" format</p>
+
+					<table class="table table-bordered" style="min-width:800px;margin-top:30px;"> 
+						<thead> 
+							<tr id="account_tr"> 
+								<th>Name</th> 
+								<th>URL</th> 
+								<th>Active</th> 
+								<th>View</th> 
+								<th>Time</th> 
+								<th></th>
+							</tr> 
+						</thead> 
+						<tbody id="link_table"> 
+							{% for link in links %}
+					  		<tr id="account_links" class="table_tr" data-id="{{link.id}}"> 
+					  			<td class="td_name">{{link.name}}</td> 
+					  			<td class="td_url">{{link.url}}</td> 
+					  			<td>
+					  				<input data-id="{{link.id}}" class="link_active" {% if link.active %} checked {% endif %}  data-toggle="toggle" data-onstyle="success" data-offstyle="danger" type="checkbox">
+					  			</td> 
+					  			<td>{{link.view}}</td> 
+					  			<td>
+                    {% if link.time > 3600 %}
+                      {{link.time|div:"3600"|floatformat}} hours
+                    {% elif link.time < 3600 and link.time > 60 %}
+                      {{link.time|div:"360"|floatformat}} min
+                    {% else %}
+                      {{link.time|floatformat}} sec
+                    {% endif %}
+                  </td> 
+					  			<td class="td_btn">
+                    <a data-id="{{link.id}}" data-url="{{link.url}}" class="btn btn-outline-primary view_link"><i class="fa fa-eye"></i></a>
+					  				<a data-id="{{link.id}}" data-name="{{link.name}}" data-url="{{link.url}}" class="btn btn-outline-primary edit_link"><i class="fa fa-pencil"></i></a>
+					  				<a data-id="{{link.id}}" class="btn btn-outline-primary delete_link"><i class="fa fa-trash"></i></a>
+					  			</td> 
+					  		</tr> 
+						{% endfor %}
+						</tbody> 
+					</table>
+				</div>
+			</div>
+
+		</div>
+
+    <div class="col-md-12" style="margin-top:30px;">
+
+      <div class="card">
+        <div class="card-header">
+          Settings
+        </div>
+        <div class="card-body" style="overflow-x: scroll;">
+          <div class="row">
+            <div class="input-group mb-12" style="margin-top:30px;margin-bottom:40px;">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">Daily maximum visits</span>
+              </div>
+              <input type="text" name="" class="form-control" value="{{user.maxVisits}}" id="user_max_visits">
+              <div class="input-group-append">
+                <a class="btn btn-outline-secondary" type="button" id="btn_max_visits" data-id="{{user.id}}">Save</a>
+              </div>
+            </div>
+            <!--<div class="col-md-6" style="text-align: center;">
+              <button id="edit_password" type="button" class="btn btn-primary">Change your password</button>
+            </div>-->
+            <div class="col-md-12" style="text-align: center;">
+              <button id="delete_account" type="button" class="btn btn-primary">Delete your account</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+	</div>
+</div>
+
+
+<!-- Modal add -->
+<div class="modal fade" id="addLinkModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add new website link</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <div class="input-group mb-3">
+		  <div class="input-group-prepend">
+		    <span class="input-group-text" id="inputGroup-sizing-default" style="width:70px;">Name</span>
+		  </div>
+		  <input maxlength="20" type="text" class="form-control add_link_name" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+		</div>
+
+		<div class="input-group mb-3">
+		  <div class="input-group-prepend">
+		    <span class="input-group-text" id="inputGroup-sizing-default" style="width:70px;">URL</span>
+		  </div>
+		  <input placeholder="www.yourwebsite.com" type="text" class="form-control add_link_url" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+		</div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button id="btn_add_link" type="button" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal view -->
+<div class="modal fade" id="viewLinkModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">View link</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <div class="col-md-12" style="padding-right:30px;padding-left:30px;">
+          <div class="embed-responsive embed-responsive-16by9 z-depth-1-half main_link">
+              <iframe class="z-depth-1-half" id="iframe_class_view" data-i="1" src="" allowfullscreen></iframe>
+          </div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button id="btn_stop_browse_x1" type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal edit -->
+<div class="modal fade" id="editLinkModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit website link</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <div class="input-group mb-3">
+		  <div class="input-group-prepend">
+		    <span class="input-group-text" id="inputGroup-sizing-default" style="width:70px;">Name</span>
+		  </div>
+		  <input type="text" class="form-control edit_link_name" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+		</div>
+
+		<div class="input-group mb-3">
+		  <div class="input-group-prepend">
+		    <span class="input-group-text" id="inputGroup-sizing-default" style="width:70px;">URL</span>
+		  </div>
+		  <input type="text" class="form-control edit_link_url" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+		</div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button id="btn_edit_link" type="button" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal delete -->
+<div class="modal fade" id="deleteLinkModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete website link</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <div class="alert alert-danger" role="alert">Are you sure you want to delete this item ?</div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button id="delete_link_btn" type="button" class="btn btn-primary">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}
+
+
+{% block scripts %}
+	<script type="text/javascript" src="{% static 'js/account.js' %}"></script>
+{% endblock scripts %}
