@@ -96,7 +96,7 @@
 {% endblock %}
 
 
-<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.js" />
+<script type="text/javascript" src="{% static 'js/jquery.js' %}" />
 {% bootstrap_javascript %}
 <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
 {% block scripts %}
