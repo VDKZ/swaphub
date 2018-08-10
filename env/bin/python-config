@@ -1,4 +1,4 @@
-#!/home/alexandre/friendClick/env/bin/python
+#!/home/alexandre/swaphub/env/bin/python
 
 import sys
 import getopt
