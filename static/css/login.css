@@ -1,0 +1,126 @@
+.login {
+    margin-top: 7rem;
+    border-radius: 4px;
+    border: 1px solid #d3d1d0;
+}
+
+.m-auto {
+    margin: auto !important;
+}
+
+.maincontent{
+    margin-top:250px !important;
+    margin-bottom:250px !important;
+}
+
+.login__register {
+    padding: 2rem;
+}
+
+.login__form {
+    background: #f2f2f2;
+    padding: 2rem 5rem;
+}
+
+.login h3 {
+    margin-bottom: 2rem;
+}
+
+h3 {
+    text-transform: uppercase;
+}
+
+.h3, h3 {
+    font-size: 1rem;
+}
+
+.login .col-md-6 {
+    text-align: center;
+}
+
+.login .col-md-6 {
+    text-align: center;
+}
+
+fieldset {
+    min-width: 0;
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: .5rem;
+}
+
+.form-group {
+    text-align: left;
+}
+
+.form-control, input, select {
+    color: #333;
+    border-radius: 2px;
+    border: 1px solid #d3d1d0;
+}
+
+.login__btn-group {
+    text-align: center;
+}
+
+.col-sm-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+.btn:not(:disabled):not(.disabled) {
+    cursor: pointer;
+}
+
+.login .btn {
+    margin: auto;
+        margin-top: auto;
+    margin-top: 1rem;
+}
+
+.btn.narrow {
+    padding: .5rem 2.5rem;
+}
+
+.btn.primary {
+    background-color: #e45212;
+    color: #fff;
+    padding: 1rem 4rem;
+    border: none;
+}
+
+.login__btn-group a {
+    margin-top: 1rem;
+    display: block;
+}
+
+a.link--styled {
+    font-size: .8rem;
+    color: #333;
+    display: block;
+}
+
+a.link--styled, a:hover {
+    text-decoration: underline;
+}
+
+.login__btn-group {
+    text-align: center;
+}
+
+.btn.secondary:hover {
+    border-color: #e45212;
+    color: #e45212;
+}
+
+.btn.secondary {
+    border: 1px solid #e45212;
+    padding: 1rem 2rem;
+    background-color: #fff;
+    color: #e45212;
+}

@@ -1,0 +1,57 @@
+.mb-0 > a:active,
+.mb-0 > a:focus,
+.mb-0 > a.active {
+  background-image: none;
+  outline: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.btn-primary{
+	background-color:#e45212;
+	border-color:#e45212;
+}
+
+.btn-primary:hover{
+	background-color:#e45212;
+	border-color:#e45212;
+	opacity: 0.8;
+}
+
+.btn-outline-primary{
+	border-color:#e45212;
+}
+
+.btn-outline-primary:hover{
+	background-color:#ccc;
+	border-color:#e45212;
+}
+
+.color-primary, .text-primary {
+    color: #e45212;
+}
+
+.page-item.active .page-link {
+    z-index: 1;
+    color: #fff;
+    background-color: #35393e;
+    border-color: #35393e;
+}
+
+#div_contact{
+	text-align: right;
+}
+
+#message{
+	resize:vertical;
+	max-height:400px;
+	min-height:200px;
+}
+
+.mb-0 > a {
+	color:#e45212;
+}
+
+.card-block{
+	padding:10px;
+}
