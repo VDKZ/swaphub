@@ -47,5 +47,3 @@ reminder.md
 *.bib
 maildumps
 .idea
-
-/env/bin
