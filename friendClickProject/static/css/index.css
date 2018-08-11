@@ -1,3 +1,32 @@
+@media (max-width: 900px) {
+
+    .col-lg-12{
+        padding-right: 0px !important;
+        padding-left: 0px !important;
+    }
+
+}
+
+@media (max-width: 500px) {
+
+   
+
+}
+
+#img_index1{
+    background: url(/static/images/image1.png) no-repeat center center;
+    background-size: auto auto;
+    background-size: cover;
+    height:500px;
+}
+
+#img_index2{
+    background: url(/static/images/image2.png) no-repeat center center;
+    background-size: auto auto;
+    background-size: cover;
+    height:500px;
+}
+
 .a_terms:active,
 .a_terms:focus,
 .a_terms.active {
