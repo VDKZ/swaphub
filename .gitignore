@@ -18,8 +18,6 @@ develop-eggs
 lib
 lib64
 
-settings.py
-
 # Installer logs
 pip-log.txt
 
