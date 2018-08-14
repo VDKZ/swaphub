@@ -52,7 +52,7 @@ class User(PermissionsMixin, AbstractBaseUser):
     def get_short_name(self):
         return self.email
 
-    def email_user(self, subject, message, from_email='noreply@swaphub.com', **kwargs):
+    def email_user(self, subject, message, from_email='noreply@swap-hub.com', **kwargs):
         """Send an email to this user."""
         send_mail(subject, message, from_email, [self.email], **kwargs)
 
