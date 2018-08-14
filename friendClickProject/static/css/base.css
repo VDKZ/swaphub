@@ -416,3 +416,7 @@ ul.sidebar .sidebar-list .menu-icon {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+#loadOverlay{
+    display: none;
+}

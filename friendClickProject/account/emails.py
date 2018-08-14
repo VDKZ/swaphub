@@ -15,7 +15,7 @@ def send_password_reset_email(context, recipient):
     context['reset_url'] = reset_url
     send_templated_mail(
         template_name='account/password_reset',
-        from_email=settings.DEFAULT_FROM_EMAIL,
+        from_email='noreply@swaphub.com',
         recipient_list=[recipient],
         context=context)
 
@@ -28,6 +28,6 @@ def send_account_delete_confirmation_email(token, recipient_email):
     ctx = {'site_name': site.name, 'domain': site.domain, 'url': delete_url}
     send_templated_mail(
         template_name='account/account_delete',
-        from_email=settings.DEFAULT_FROM_EMAIL,
+        from_email='noreply@swaphub.com',
         recipient_list=[recipient_email],
 context=ctx)
