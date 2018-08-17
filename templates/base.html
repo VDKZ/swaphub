@@ -24,7 +24,7 @@
         });
 	</script>
 
-	<title>{% block title %}SwapHub{% endblock %}</title>
+	<title>{% block title %}swap-hub{% endblock %}</title>
 	{% block meta %}
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,9 +32,11 @@
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<meta name="apple-mobile-web-app-title" content="{{ site.name }}">
+		<meta name="og:site_name" content="swap-hub">
 		<meta name="og:type" content="website">
+		<meta name="og:title" content="Raise your website trafic !">
+		<meta name="og:description" content="Free trafic exchange coming from real and active people">
 	{% endblock meta %}
-
   
 	{% bootstrap_css %}
 	<link rel="stylesheet" type="text/css" href="{% static 'css/sidebar-left.css' %}">
@@ -48,7 +50,6 @@
 	{% endblock %}
 
 	{% block meta_tags %}
-		<meta property="og:title" content="{{ site.name }}">
 		<meta property="og:url" content="{{ request.build_absolute_uri }}">
 		<meta property="og:image" content="{% static 'images/logo.png' %}">
 	{% endblock meta_tags %}
