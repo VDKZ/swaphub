@@ -2,6 +2,8 @@
 
     .navbar-brand{
         margin-right:0px !important;
+        padding-right:5px !important;
+        padding-left:10px !important;
     }
 
     .col-lg-12{
